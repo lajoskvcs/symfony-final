@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/admin/css/main.css') }}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <div class="nav">
+            <ul>
+                <li><a href="{{ url('fos_user_security_logout') }}">Logout</a></li>
+                <li><a href="{{ url('app_job_index') }}">Back to the page</a></li>
+            </ul>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="{{ url('admin_category_index') }}">Category</a></li>
+                <li><a href="{{ url('admin_information_index') }}">Information</a></li>
+                <li><a href="{{ url('admin_menu_index') }}">Menu</a></li>
+                <li><a href="{{ url('admin_job_index') }}">Jobs</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">
+        </div>
+    </div>
+    <div id="content">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

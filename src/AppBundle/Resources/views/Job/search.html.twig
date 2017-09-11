@@ -1,0 +1,15 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block title %}JobZ{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/app/css/jobs.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if jobs %}
+        {{ include('AppBundle:Job:_jobtable.html.twig', { 'jobs': jobs }) }}
+    {% else %}
+        Nincs a keresésnek megfelelő eredmény!
+    {% endif %}
+{% endblock %}

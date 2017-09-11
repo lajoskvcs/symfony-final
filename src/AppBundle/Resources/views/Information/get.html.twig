@@ -1,0 +1,14 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block title %}JobZ{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/app/css/jobs.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h2 class="heading">{{ information.title }}</h2>
+        <p>{{ information.description }}</p>
+    </div>
+{% endblock %}

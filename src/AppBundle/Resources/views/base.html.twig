@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/app/css/main.css') }}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div id="container">
+    <div id="header">
+        <div class="nav">
+            <ul>
+                {% if app.user %}
+                    <li><a href="{{ url('fos_user_security_logout') }}">Logout</a></li>
+                    {% if 'ROLE_ADMIN' in app.user.roles|keys %}
+                        <li><a href="{{ url('admin_defaultcontroller_index') }}">Admin</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{ url('fos_user_security_login') }}">Login</a></li>
+                    <li><a href="{{ url('fos_user_registration_register') }}">Registration</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="nav-menu">
+            {{ render(controller(
+            'AppBundle:Menu:generate',
+            { 'place': 'header' }
+            )) }}
+        </div>
+        <div class="clearfix"></div>
+        <div class="content">
+            <h1>
+                <a href="/"><img src="{{ asset('bundles/app/images/jobz.gif') }}"></a>
+            </h1>
+            <div id="sub_header">
+                <div class="post">
+                    <h2>
+                        Ask for people
+                    </h2>
+                    <div>
+                        <a href="{{ url('app_job_post') }}">Post a Job</a>
+                    </div>
+                </div>
+                <div class="search">
+                    <img src="{{ asset('bundles/app/images/ask.png') }}" alt="ask">
+                    <h2>
+                        Ask for a job
+                    </h2>
+                    <form action="{{ url('app_job_search') }}" method="POST">
+                        <input name="keywords" id="search_keywords" class="input" type="text" value="{{ search_for|default('') }}">
+                        <input value="search" src="bundles/app/images/search.png" class="but_search" type="image">
+                        <div class="help">
+                            Enter some keywords (city, country, position, ...)
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        {% block body %}{% endblock %}
+    </div>
+    <div id="footer">
+        <div class="content">
+            {{ render(controller(
+            'AppBundle:Menu:generate',
+            { 'place': 'footer' }
+            )) }}
+        </div>
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

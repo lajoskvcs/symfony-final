@@ -1,0 +1,36 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block title %}JobZ{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/app/css/job.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        {% if job %}
+            <div id="job">
+                <h1>
+                    {{ job.company }}
+                </h1>
+                <h2>
+                    {{ job.location }}
+                </h2>
+                <h3>
+                    {{ job.type }}
+                </h3>
+                <div class="description">
+                    {{ job.jobdescription|converturls }}
+                </div>
+                <h4>
+                    How to apply?
+                </h4>
+                <p class="how_to_apply">
+                    {{ job.howtoapply|converturls }}
+                </p>
+            </div>
+        {% else %}
+            Nem található munka ezzel az azonosítóval!
+        {% endif %}
+    </div>
+{% endblock %}

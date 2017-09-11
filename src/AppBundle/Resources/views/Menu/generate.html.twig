@@ -1,0 +1,5 @@
+<ul>
+    {% for item in menu %}
+        <li><a href="{{ url('app_information_get', {'slug': item.slug}) }}">{{ item.title }}</a></li>
+    {% endfor %}
+</ul>

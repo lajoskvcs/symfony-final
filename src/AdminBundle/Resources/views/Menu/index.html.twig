@@ -1,0 +1,54 @@
+{% extends "AdminBundle::base.html.twig" %}
+
+{% block title %}Admin - Categories{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/app/css/job.css') }}">
+{% endblock %}
+
+{% block body %}
+    <a href="{{ url('admin_menu_new') }}">Add new</a>
+
+<table id="job_form">
+    <thead>
+        <tr>
+            <th colspan="3" align="center">Header</th>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in header %}
+        <tr>
+            <td>{{ menu.id }}</td>
+            <td>{{ menu.title }}</td>
+            <td><a href="{{ url('admin_menu_edit', {'id': menu.id}) }}">edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    <table id="job_form">
+        <thead>
+        <tr>
+            <th colspan="3" align="center">Footer</th>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for menu in footer %}
+            <tr>
+                <td>{{ menu.id }}</td>
+                <td>{{ menu.title }}</td>
+                <td><a href="{{ url('admin_menu_edit', {'id': menu.id}) }}">edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

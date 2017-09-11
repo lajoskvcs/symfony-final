@@ -1,0 +1,8 @@
+parameters:
+    string_decorator.class: AppBundle\Twig\AppExtension
+
+services:
+    twig.string_decorator:
+        class: %string_decorator.class%
+        tags:
+            - { name: twig.extension }
